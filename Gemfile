@@ -75,3 +75,4 @@ end
 
 gem 'brakeman'
 gem 'rubocop'
+gem 'seed_dump'
