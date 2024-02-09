@@ -1,3 +1,3 @@
 class Feedback < ApplicationRecord
-    validates :feedback, presence: true
+  validates :feedback, presence: true
 end
