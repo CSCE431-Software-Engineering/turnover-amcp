@@ -7,6 +7,6 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 Feedback.create!([
-    {name: "John Doe", email: "johndoe@gmail.com", feedback:"Website looks wonderful!"},
-    {name: "Sarah Doe", email: "sarahdoe@gmail.com", feedback:"This website looks terrible!"}
-])
+                   { name: 'John Doe', email: 'johndoe@gmail.com', feedback: 'Website looks wonderful!' },
+                   { name: 'Sarah Doe', email: 'sarahdoe@gmail.com', feedback: 'This website looks terrible!' }
+                 ])
