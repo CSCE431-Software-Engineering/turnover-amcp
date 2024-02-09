@@ -1,3 +1,6 @@
+<%= link_to("Back to Feedback", feedbacks_path, :class => 'back-link') %>
+
+
 <h1>New feedback</h1>
 
 <%= render "form", feedback: @feedback %>
@@ -5,5 +8,5 @@
 <br>
 
 <div>
-  <%= link_to "Back to feedbacks", feedbacks_path %>
+  <%= link_to "Back to feedback", feedbacks_path %>
 </div>
