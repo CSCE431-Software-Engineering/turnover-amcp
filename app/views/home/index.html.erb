@@ -1,3 +1,11 @@
 <h1>AMCP</h1>
+<% if @message %>
+  <p><%= @message %></p>
+  <%= link_to "Sign Out", destroy_admin_session_path %>
+<% end %>
 <p>This is the homepage for the AMCP website</p>
 <%= link_to('Feedback', feedbacks_path) %><br />
+<%= link_to('Activities', activities_path) %><br />
+<% if admin_signed_in? %> <!-- Check if admin is signed in (Devise helper) -->
+  <%= link_to 'Profile', profile_admins_path, class: 'your-css-class' %>
+<% end %>
