@@ -6,12 +6,20 @@
 
   <p>
     <strong>Start time:</strong>
-    <%= activity.start_time.strftime("%H:%M:%S") %>
+    <% if activity.start_time.present? %>
+      <%= activity.start_time.strftime("%H:%M:%S") %>
+    <% else %>
+      Not specified
+    <% end %>
   </p>
 
   <p>
     <strong>End time:</strong>
-    <%= activity.end_time.strftime("%H:%M:%S") %>
+    <% if activity.end_time.present? %>
+      <%= activity.end_time.strftime("%H:%M:%S") %>
+    <% else %>
+      Not specified
+    <% end %>
   </p>
 
   <p>
