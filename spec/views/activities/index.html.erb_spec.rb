@@ -7,13 +7,21 @@ RSpec.describe "activities/index", type: :view do
         event_name: "Event Name",
         location: "Location",
         description: "Description",
-        activity_type: "Activity Type"
+        activity_type: "Activity Type",
+        start_time: Time.current,
+        end_time: Time.current + 1.hour,
+        start_date: Date.today,
+        end_date: Date.today + 1.day
       ),
       Activity.create!(
         event_name: "Event Name",
         location: "Location",
         description: "Description",
-        activity_type: "Activity Type"
+        activity_type: "Activity Type",
+        start_time: Time.current,
+        end_time: Time.current + 1.hour,
+        start_date: Date.today,
+        end_date: Date.today + 1.day
       )
     ])
   end

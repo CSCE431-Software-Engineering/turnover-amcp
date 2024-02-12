@@ -6,7 +6,11 @@ RSpec.describe "activities/edit", type: :view do
       event_name: "MyString",
       location: "MyString",
       description: "MyString",
-      activity_type: "MyString"
+      activity_type: "MyString",
+      start_time: Time.current,
+      end_time: Time.current + 1.hour,
+      start_date: Date.today,
+      end_date: Date.today + 1.day
     )
   }
 
