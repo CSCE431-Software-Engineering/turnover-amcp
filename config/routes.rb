@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get 'profile', on: :collection, as: 'profile' # Changes the path to /admins/profile
     get 'profiles', on: :collection, as: 'profiles' # Changes the path to /admins/profiles
   end
+  resources :activities
   resources :feedbacks
   resources :home
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
