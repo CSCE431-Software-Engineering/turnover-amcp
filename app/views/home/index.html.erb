@@ -1,3 +1,7 @@
 <h1>AMCP</h1>
+<% if @message %>
+  <p><%= @message %></p>
+  <%= link_to "Sign Out", destroy_admin_session_path %>
+<% end %>
 <p>This is the homepage for the AMCP website</p>
 <%= link_to('Feedback', feedbacks_path) %><br />
