@@ -3,6 +3,11 @@ require 'rails_helper'
 
 
 RSpec.describe 'CRUD team', type: :feature do
+  before do
+    setup_omniauth_mock
+    user_sign_in_via_google
+  end
+  
   scenario 'valid inputs' do
     visit new_team_path
     fill_in 'team[team_number]', with: '1'

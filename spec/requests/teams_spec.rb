@@ -17,6 +17,12 @@ RSpec.describe "/teams", type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Team. As you add validations to Team, be sure to
   # adjust the attributes here as well.
+  include Devise::Test::IntegrationHelpers
+  before do
+    admin = FactoryBot.create(:admin) # Adjust as needed
+    sign_in admin
+  end
+  
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
   }
