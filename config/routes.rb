@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     get 'admins/sign_out', to: 'admins/sessions#destroy', as: :destroy_admin_session
   end
 
+  resources :admins do
+    get 'profile', on: :collection, as: 'profile' # Changes the path to /admins/profile
+    get 'profiles', on: :collection, as: 'profiles' # Changes the path to /admins/profiles
+  end
   resources :feedbacks
   resources :home
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

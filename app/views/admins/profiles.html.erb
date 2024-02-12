@@ -1,0 +1,25 @@
+<h1>Admin Profiles</h1>
+<% if @admins.empty? %>
+  <p>No admins found.</p>
+<% else %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admins.each do |admin| %>
+      <tr>
+        <td><%= admin.first_name %></td>
+        <td><%= admin.last_name %></td>
+        <td><%= admin.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
