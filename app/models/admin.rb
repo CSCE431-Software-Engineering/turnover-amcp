@@ -2,7 +2,8 @@ class Admin < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :omniauthable, omniauth_providers: [:google_oauth2]
-
+  validates :email, presence: true
+  validates :email, format: { with: /\A[\w+\-.]+@(gmail\.com|tamu\.edu)\z/i, message: "must be a Gmail or TAMU email" }
   def self.from_google(email:, full_name:, uid:, avatar_url:)
     # return nil unless email =~ /@mybusiness.com\z/
     return nil unless email =~ /\A[\w+\-.]+@(gmail.com|tamu.edu)\z/i
