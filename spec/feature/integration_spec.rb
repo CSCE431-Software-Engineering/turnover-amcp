@@ -3,6 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe 'Activity management', type: :feature do
+
+  before do
+    setup_omniauth_mock
+    user_sign_in_via_google
+  end
+
   scenario 'User creates a new activity' do
     visit new_activity_path
 
