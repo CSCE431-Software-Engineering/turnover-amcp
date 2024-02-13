@@ -12,17 +12,17 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/activities", type: :request do
+RSpec.describe "/teams", type: :request do
   
   # This should return the minimal set of attributes required to create a valid
-  # Activity. As you add validations to Activity, be sure to
+  # Team. As you add validations to Team, be sure to
   # adjust the attributes here as well.
   include Devise::Test::IntegrationHelpers
   before do
     admin = FactoryBot.create(:admin) # Adjust as needed
     sign_in admin
   end
-
+  
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
   }
@@ -33,59 +33,59 @@ RSpec.describe "/activities", type: :request do
 
   describe "GET /index" do
     it "renders a successful response" do
-      Activity.create! valid_attributes
-      get activities_url
+      Team.create! valid_attributes
+      get teams_url
       expect(response).to be_successful
     end
   end
 
   describe "GET /show" do
     it "renders a successful response" do
-      activity = Activity.create! valid_attributes
-      get activity_url(activity)
+      team = Team.create! valid_attributes
+      get team_url(team)
       expect(response).to be_successful
     end
   end
 
   describe "GET /new" do
     it "renders a successful response" do
-      get new_activity_url
+      get new_team_url
       expect(response).to be_successful
     end
   end
 
   describe "GET /edit" do
     it "renders a successful response" do
-      activity = Activity.create! valid_attributes
-      get edit_activity_url(activity)
+      team = Team.create! valid_attributes
+      get edit_team_url(team)
       expect(response).to be_successful
     end
   end
 
   describe "POST /create" do
     context "with valid parameters" do
-      it "creates a new Activity" do
+      it "creates a new Team" do
         expect {
-          post activities_url, params: { activity: valid_attributes }
-        }.to change(Activity, :count).by(1)
+          post teams_url, params: { team: valid_attributes }
+        }.to change(Team, :count).by(1)
       end
 
-      it "redirects to the created activity" do
-        post activities_url, params: { activity: valid_attributes }
-        expect(response).to redirect_to(activity_url(Activity.last))
+      it "redirects to the created team" do
+        post teams_url, params: { team: valid_attributes }
+        expect(response).to redirect_to(team_url(Team.last))
       end
     end
 
     context "with invalid parameters" do
-      it "does not create a new Activity" do
+      it "does not create a new Team" do
         expect {
-          post activities_url, params: { activity: invalid_attributes }
-        }.to change(Activity, :count).by(0)
+          post teams_url, params: { team: invalid_attributes }
+        }.to change(Team, :count).by(0)
       end
 
     
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
-        post activities_url, params: { activity: invalid_attributes }
+        post teams_url, params: { team: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
     
@@ -98,26 +98,26 @@ RSpec.describe "/activities", type: :request do
         skip("Add a hash of attributes valid for your model")
       }
 
-      it "updates the requested activity" do
-        activity = Activity.create! valid_attributes
-        patch activity_url(activity), params: { activity: new_attributes }
-        activity.reload
+      it "updates the requested team" do
+        team = Team.create! valid_attributes
+        patch team_url(team), params: { team: new_attributes }
+        team.reload
         skip("Add assertions for updated state")
       end
 
-      it "redirects to the activity" do
-        activity = Activity.create! valid_attributes
-        patch activity_url(activity), params: { activity: new_attributes }
-        activity.reload
-        expect(response).to redirect_to(activity_url(activity))
+      it "redirects to the team" do
+        team = Team.create! valid_attributes
+        patch team_url(team), params: { team: new_attributes }
+        team.reload
+        expect(response).to redirect_to(team_url(team))
       end
     end
 
     context "with invalid parameters" do
     
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
-        activity = Activity.create! valid_attributes
-        patch activity_url(activity), params: { activity: invalid_attributes }
+        team = Team.create! valid_attributes
+        patch team_url(team), params: { team: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
     
@@ -125,17 +125,17 @@ RSpec.describe "/activities", type: :request do
   end
 
   describe "DELETE /destroy" do
-    it "destroys the requested activity" do
-      activity = Activity.create! valid_attributes
+    it "destroys the requested team" do
+      team = Team.create! valid_attributes
       expect {
-        delete activity_url(activity)
-      }.to change(Activity, :count).by(-1)
+        delete team_url(team)
+      }.to change(Team, :count).by(-1)
     end
 
-    it "redirects to the activities list" do
-      activity = Activity.create! valid_attributes
-      delete activity_url(activity)
-      expect(response).to redirect_to(activities_url)
+    it "redirects to the teams list" do
+      team = Team.create! valid_attributes
+      delete team_url(team)
+      expect(response).to redirect_to(teams_url)
     end
   end
 end
