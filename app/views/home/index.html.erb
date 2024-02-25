@@ -7,6 +7,7 @@
 <%= link_to('Feedback', feedbacks_path) %><br />
 <%= link_to('Activities', activities_path) %><br />
 <%= link_to "Teams", teams_path %><br />
+<%= link_to('Members', members_path) %><br />
 <% if admin_signed_in? %> <!-- Check if admin is signed in (Devise helper) -->
   <%= link_to 'Profile', profile_admins_path, class: 'your-css-class' %>
 <% end %>

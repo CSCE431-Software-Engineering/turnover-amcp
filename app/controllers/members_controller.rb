@@ -21,8 +21,13 @@ class MembersController < ApplicationController
 
   # POST /members or /members.json
   def create
+    # Check if the team_id is set to 0 and if so, set it to nil
+    if member_params[:team_id].to_i.zero?
+      params[:member][:team_id] = nil
+    end
+  
     @member = Member.new(member_params)
-
+  
     respond_to do |format|
       if @member.save
         format.html { redirect_to member_url(@member), notice: "Member was successfully created." }
@@ -36,6 +41,11 @@ class MembersController < ApplicationController
 
   # PATCH/PUT /members/1 or /members/1.json
   def update
+    # Check if the team_id is set to 0 and if so, set it to nil
+    if member_params[:team_id].to_i.zero?
+      params[:member][:team_id] = nil
+    end
+  
     respond_to do |format|
       if @member.update(member_params)
         format.html { redirect_to member_url(@member), notice: "Member was successfully updated." }
