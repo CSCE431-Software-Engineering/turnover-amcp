@@ -64,9 +64,9 @@ end
 RSpec.describe Feedback, type: :model do
   subject do
     described_class.new(
-      feedback: "Providing some feedback.",
-      name: "Sir Feedback",
-      email: "feedback@gmail.com"
+      feedback: 'Providing some feedback.',
+      name: 'Sir Feedback',
+      email: 'feedback@gmail.com'
     )
   end
 
@@ -89,5 +89,3 @@ RSpec.describe Feedback, type: :model do
     expect(subject).not_to be_valid
   end
 end
-
-

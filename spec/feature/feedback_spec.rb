@@ -13,14 +13,11 @@ require 'rails_helper'
 #   end
 # end
 
-
 RSpec.describe 'CRUD feedback', type: :feature do
-
   before do
     setup_omniauth_mock
     user_sign_in_via_google
   end
-
 
   scenario 'valid inputs' do
     visit new_feedback_path
@@ -65,7 +62,7 @@ RSpec.describe 'CRUD feedback', type: :feature do
     fill_in 'feedback[email]', with: 'testing@email.com'
     fill_in 'feedback[feedback]', with: ''
     click_on 'Create Feedback'
-    expect(page).to have_content("1 error prohibited this feedback from being saved:")
+    expect(page).to have_content('1 error prohibited this feedback from being saved:')
   end
 
   scenario 'Delete feedback' do
@@ -73,7 +70,7 @@ RSpec.describe 'CRUD feedback', type: :feature do
     visit feedbacks_path
     click_on 'Show this feedback', match: :first
     click_on 'Destroy this feedback'
-    expect(page).to have_content("Feedback was successfully destroyed.")
+    expect(page).to have_content('Feedback was successfully destroyed.')
   end
 
   scenario 'Update feedback sunny' do

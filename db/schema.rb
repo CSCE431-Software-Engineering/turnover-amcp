@@ -10,49 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_12_215529) do
+ActiveRecord::Schema[7.0].define(version: 20_240_212_215_529) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "activities", force: :cascade do |t|
-    t.string "event_name"
-    t.time "start_time"
-    t.time "end_time"
-    t.date "start_date"
-    t.date "end_date"
-    t.string "location"
-    t.string "description"
-    t.string "activity_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'activities', force: :cascade do |t|
+    t.string 'event_name'
+    t.time 'start_time'
+    t.time 'end_time'
+    t.date 'start_date'
+    t.date 'end_date'
+    t.string 'location'
+    t.string 'description'
+    t.string 'activity_type'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "admins", force: :cascade do |t|
-    t.string "email", null: false
-    t.string "full_name"
-    t.string "uid"
-    t.string "avatar_url"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "first_name"
-    t.string "last_name"
-    t.index ["email"], name: "index_admins_on_email", unique: true
-    t.index ["uid"], name: "index_admins_on_uid", unique: true
+  create_table 'admins', force: :cascade do |t|
+    t.string 'email', null: false
+    t.string 'full_name'
+    t.string 'uid'
+    t.string 'avatar_url'
+    t.datetime 'created_at', precision: nil, null: false
+    t.datetime 'updated_at', precision: nil, null: false
+    t.string 'first_name'
+    t.string 'last_name'
+    t.index ['email'], name: 'index_admins_on_email', unique: true
+    t.index ['uid'], name: 'index_admins_on_uid', unique: true
   end
 
-  create_table "feedbacks", force: :cascade do |t|
-    t.string "feedback"
-    t.string "email"
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'feedbacks', force: :cascade do |t|
+    t.string 'feedback'
+    t.string 'email'
+    t.string 'name'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "teams", force: :cascade do |t|
-    t.integer "team_number"
-    t.integer "member_count"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'teams', force: :cascade do |t|
+    t.integer 'team_number'
+    t.integer 'member_count'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
-
 end
