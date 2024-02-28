@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "teams/show", type: :view do
+RSpec.describe 'teams/show', type: :view do
   before(:each) do
     assign(:team, Team.create!(
-      team_number: 2,
-      member_count: 3
-    ))
+                    team_number: 2,
+                    member_count: 3
+                  ))
   end
 
-  it "renders attributes in <p>" do
+  it 'renders attributes in <p>' do
     render
     expect(rendered).to match(/2/)
     expect(rendered).to match(/3/)
