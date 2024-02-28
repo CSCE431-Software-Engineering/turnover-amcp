@@ -2,11 +2,11 @@ inherit_from:
     - .rubocop_todo.yml
     - .rubocop-performance.yml
     - .rubocop-rails.yml
-    - .rubocop-performance.yml
-    - .rubocop-rails.yml
+#    - .rubocop-performance.yml
+#    - .rubocop-rails.yml
 
-    - .rubocop-performance.yml
-    - .rubocop-rails.yml
+#    - .rubocop-performance.yml
+#    - .rubocop-rails.yml
 
     # .rubocop.yml
 
