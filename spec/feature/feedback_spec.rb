@@ -13,7 +13,15 @@ require 'rails_helper'
 #   end
 # end
 
+
 RSpec.describe 'CRUD feedback', type: :feature do
+
+  before do
+    setup_omniauth_mock
+    user_sign_in_via_google
+  end
+
+
   scenario 'valid inputs' do
     visit new_feedback_path
     fill_in 'feedback[name]', with: 'Test Testington'

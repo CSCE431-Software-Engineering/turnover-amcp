@@ -57,6 +57,7 @@ group :development, :test do
   gem 'rubocop-performance'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -80,3 +81,10 @@ end
 
 gem 'brakeman'
 gem 'seed_dump'
+
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+
+# gem "devise", github: "heartcombo/devise", branch: "master"
+gem 'omniauth-rails_csrf_protection'

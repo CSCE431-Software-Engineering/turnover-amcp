@@ -1,0 +1,8 @@
+<!-- app/views/admins/show.html.erb -->
+<%= link_to 'Back to Home', root_path, class: 'your-css-class' %>
+<p>Email: <%= @admin.email %></p>
+<p>First Name: <%= @admin.first_name %></p>
+<p>Last Name: <%= @admin.last_name %></p>
+<%= link_to 'Edit my Profile', edit_admin_path(@admin), class: 'your-css-class' %>
+<br>
+<%= link_to 'View all User profile', profiles_admins_path, class: 'your-css-class' %>
