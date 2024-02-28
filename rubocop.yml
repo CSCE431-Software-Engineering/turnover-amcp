@@ -2,11 +2,6 @@ inherit_from:
     - .rubocop_todo.yml
     - .rubocop-performance.yml
     - .rubocop-rails.yml
-    - .rubocop-performance.yml
-    - .rubocop-rails.yml
-
-    - .rubocop-performance.yml
-    - .rubocop-rails.yml
 
     # .rubocop.yml
 
@@ -20,9 +15,6 @@ inherit_from:
     # where the inspected file is and continue its way up to the root directory.
     #
 
-    - ".rubocop-performance.yml"
-    - ".rubocop-rails.yml"
-
 require:
     - rubocop-performance
     - rubocop-rails
@@ -30,18 +22,18 @@ require:
 
 AllCops:
     TargetRubyVersion: 2.7
-    TargetRailsVersion: 6.0
+    TagretRailsVersion: 6.0
     Exclude:
-        - "**/db/migrate/*"
-        - "db/schema.rb"
-        - "**/Gemfile.lock"
-        - "**/Rakefile"
-        - "**/rails"
-        - "**/vendor/**/*"
-        - "**/spec_helper.rb"
-        - "node_modules/**/*"
-        - "bin/*"
-        - "config/**/*"
+    - '**/db/migrate/*'
+    - 'db/schema.rb'
+    - '**/Gemfile.lock'
+    - '**/Rakefile'
+    - '**/rails'
+    - '**/vendor/**/*'
+    - '**/spec_helper.rb'
+    - 'node_modules/**/*'
+    - 'bin/*'
+    - 'config/**/*'
 
 ###########################################################
 ###################### RuboCop ############################
