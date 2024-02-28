@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Activity model represents an event or activity within the application.
 # It includes various fields such as event_name, start_time, end_time,
 # start_date, end_date, location, description, and activity_type, each of which

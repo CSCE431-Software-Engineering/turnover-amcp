@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Admins::SessionsController customizes the session management for admins.
 # It inherits from Devise::SessionsController to leverage Devise's default
 # session handling mechanisms while providing an opportunity to extend or

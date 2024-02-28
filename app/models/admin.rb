@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # The Admin model represents an administrative user within the application.
 # It is configured to use Devise for authentication, with support for
 # OmniAuth-based authentication via Google OAuth2. This setup allows admins

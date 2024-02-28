@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # ActivitiesController manages all actions related to Activity resources.
 # This includes creating, updating, deleting, and displaying activities.
 # It inherits from ApplicationController to leverage common functionality

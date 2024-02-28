@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # ApplicationController serves as the base class for all controllers in the application.
 # It inherits from ActionController::Base, providing a foundation for common behaviors
 # across all controllers. This includes setting up universal filters and methods

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # FeedbacksController manages all actions related to Feedback resources.
 # This includes creating, updating, deleting, and displaying feedback.
 # It inherits from ApplicationController to leverage common functionality

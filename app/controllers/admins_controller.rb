@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # AdminsController manages all actions related to Admin resources.
 # This includes creating, updating, deleting, and displaying admins.
 # It inherits from ApplicationController to leverage common functionality

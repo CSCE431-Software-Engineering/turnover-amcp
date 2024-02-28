@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # HomeController is responsible for handling requests to the application's homepage.
 # It inherits from ApplicationController to ensure consistency and application of any
 # universal filters defined there, such as authentication. The controller includes actions
