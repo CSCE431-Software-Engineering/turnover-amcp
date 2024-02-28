@@ -1,5 +1,8 @@
 # frozen_string_literal: true
-
+# TeamsController manages all actions related to Team resources.
+# This includes creating, updating, deleting, and displaying teams.
+# It inherits from ApplicationController to leverage common functionality
+# across the application.
 class TeamsController < ApplicationController
   before_action :set_team, only: %i[show edit update destroy]
 

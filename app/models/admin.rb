@@ -1,5 +1,18 @@
 # frozen_string_literal: true
-
+# The Admin model represents an administrative user within the application.
+# It is configured to use Devise for authentication, with support for
+# OmniAuth-based authentication via Google OAuth2. This setup allows admins
+# to sign in using their Google or TAMU (Texas A&M University) email addresses.
+# The model includes validations for the presence and specific format of email addresses,
+# ensuring they are either Gmail or TAMU emails. Additionally, the model provides a
+# class method `from_google` for creating or updating admin records based on data
+# received from Google OAuth2 authentication.
+#
+# Attributes:
+# - email: String, the admin's email address, must be Gmail or TAMU.
+# - full_name: String, the admin's full name, split into first and last names for storage.
+# - uid: String, a unique identifier provided by Google OAuth2.
+# - avatar_url: String, URL of the admin's avatar image from Google.
 class Admin < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

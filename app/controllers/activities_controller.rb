@@ -1,5 +1,8 @@
 # frozen_string_literal: true
-
+# ActivitiesController manages all actions related to Activity resources.
+# This includes creating, updating, deleting, and displaying activities.
+# It inherits from ApplicationController to leverage common functionality
+# across the application.
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: %i[show edit update destroy]
 

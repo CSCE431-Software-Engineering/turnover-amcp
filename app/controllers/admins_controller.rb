@@ -1,5 +1,8 @@
 # frozen_string_literal: true
-
+# AdminsController manages all actions related to Admin resources.
+# This includes creating, updating, deleting, and displaying admins.
+# It inherits from ApplicationController to leverage common functionality
+# across the application.
 # app/controllers/admins_controller.rb
 class AdminsController < ApplicationController
   before_action :authenticate_admin! # Ensure the admin is logged in

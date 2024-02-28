@@ -32,6 +32,8 @@ AllCops:
     TargetRubyVersion: 2.7
     TargetRailsVersion: 6.0
     Exclude:
+        - "**/helpers/*"
+        - "**/mailers/*"
         - "**/db/migrate/*"
         - "db/schema.rb"
         - "**/Gemfile.lock"

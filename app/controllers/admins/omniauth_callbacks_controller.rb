@@ -1,5 +1,9 @@
 # frozen_string_literal: true
-
+# Admins::OmniauthCallbacksController handles the OmniAuth callbacks
+# for admin authentication. It inherits from Devise's OmniAuthCallbacksController
+# to utilize Devise's built-in methods for managing authentication callbacks
+# from various providers. This controller may customize the response after
+# successful or failed authentication via third-party services.
 module Admins
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     def google_oauth2
