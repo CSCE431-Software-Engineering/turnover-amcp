@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RequestAuthHelpers
   def authenticate_admin
     admin = FactoryBot.create(:admin) # Ensure you have a factory for the admin

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module AuthenticationHelpers
   def user_sign_in_via_google
     visit '/admins/sign_in' # Adjust this path based on your actual route

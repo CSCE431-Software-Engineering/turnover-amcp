@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # spec/support/omniauth_mocks.rb
 module OmniAuthMocks
   def setup_omniauth_mock

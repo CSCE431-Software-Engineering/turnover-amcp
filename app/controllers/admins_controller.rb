@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # app/controllers/admins_controller.rb
 class AdminsController < ApplicationController
   before_action :authenticate_admin! # Ensure the admin is logged in

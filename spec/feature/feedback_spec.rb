@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # location: spec/feature/feedback_spec.rb
 require 'rails_helper'
 
@@ -66,7 +68,7 @@ RSpec.describe 'CRUD feedback', type: :feature do
   end
 
   scenario 'Delete feedback' do
-    feedback = Feedback.create(name: 'Test Testington', email: 'testing@email.com', feedback: 'Feedback')
+    Feedback.create(name: 'Test Testington', email: 'testing@email.com', feedback: 'Feedback')
     visit feedbacks_path
     click_on 'Show this feedback', match: :first
     click_on 'Destroy this feedback'

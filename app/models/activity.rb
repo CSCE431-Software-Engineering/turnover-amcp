@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Activity < ApplicationRecord
   validates :event_name, presence: true
   validates :start_time, presence: true
