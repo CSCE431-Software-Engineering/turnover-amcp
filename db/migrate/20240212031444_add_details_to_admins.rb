@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddDetailsToAdmins < ActiveRecord::Migration[6.0]
   def change
     add_column :admins, :first_name, :string

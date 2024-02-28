@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # spec/models/activity_spec.rb
 
 require 'rails_helper'
@@ -61,4 +63,31 @@ RSpec.describe Activity, type: :model do
   end
 end
 
+RSpec.describe Feedback, type: :model do
+  subject do
+    described_class.new(
+      feedback: 'Providing some feedback.',
+      name: 'Sir Feedback',
+      email: 'feedback@gmail.com'
+    )
+  end
 
+  it 'is valid with valid attributes' do
+    expect(subject).to be_valid
+  end
+
+  it 'is valid without a name' do
+    subject.name = nil
+    expect(subject).to be_valid
+  end
+
+  it 'is valid without an email' do
+    subject.email = nil
+    expect(subject).to be_valid
+  end
+
+  it 'is not valid without feedback' do
+    subject.feedback = nil
+    expect(subject).not_to be_valid
+  end
+end

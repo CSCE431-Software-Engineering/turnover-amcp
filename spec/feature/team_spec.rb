@@ -1,13 +1,14 @@
+# frozen_string_literal: true
+
 # location: spec/feature/team_spec.rb
 require 'rails_helper'
-
 
 RSpec.describe 'CRUD team', type: :feature do
   before do
     setup_omniauth_mock
     user_sign_in_via_google
   end
-  
+
   scenario 'valid inputs' do
     visit new_team_path
     fill_in 'team[team_number]', with: '1'
@@ -41,11 +42,11 @@ RSpec.describe 'CRUD team', type: :feature do
   end
 
   scenario 'Delete team' do
-    team = Team.create(team_number: '99', member_count: '7')
+    Team.create(team_number: '99', member_count: '7')
     visit teams_path
     click_on 'Show this team', match: :first
     click_on 'Destroy this team'
-    expect(page).to have_content("Team was successfully destroyed.")
+    expect(page).to have_content('Team was successfully destroyed.')
   end
 
   scenario 'Update team sunny' do

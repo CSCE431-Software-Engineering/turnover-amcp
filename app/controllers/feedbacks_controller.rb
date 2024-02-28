@@ -1,3 +1,9 @@
+# frozen_string_literal: true
+
+# FeedbacksController manages all actions related to Feedback resources.
+# This includes creating, updating, deleting, and displaying feedback.
+# It inherits from ApplicationController to leverage common functionality
+# across the application.
 class FeedbacksController < ApplicationController
   before_action :set_feedback, only: %i[show edit update destroy]
 
