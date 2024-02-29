@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RequestAuthHelpers
     def authenticate_member
       member = FactoryBot.create(:member) # Ensure you have a factory for the member
