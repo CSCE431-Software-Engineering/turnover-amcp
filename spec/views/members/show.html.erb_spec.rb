@@ -8,7 +8,7 @@ RSpec.describe "members/show", type: :view do
       last_name: "Last Name",
       points: 2,
       is_admin: false,
-      email: "Email",
+      email: "test@gmail.com",
       paid_nat_dues: false,
       paid_loc_dues: false
     ))

@@ -9,7 +9,7 @@ RSpec.describe "members/index", type: :view do
         last_name: "Last Name",
         points: 2,
         is_admin: false,
-        email: "Email",
+        email: "test@gmail.com",
         paid_nat_dues: false,
         paid_loc_dues: false
       ),
@@ -19,7 +19,7 @@ RSpec.describe "members/index", type: :view do
         last_name: "Last Name",
         points: 2,
         is_admin: false,
-        email: "Email",
+        email: "test@tamu.edu",
         paid_nat_dues: false,
         paid_loc_dues: false
       )
@@ -28,14 +28,13 @@ RSpec.describe "members/index", type: :view do
 
   it "renders a list of members" do
     render
-    cell_selector = Rails::VERSION::STRING >= '7' ? 'div>p' : 'tr>td'
-    assert_select cell_selector, text: Regexp.new(nil.to_s), count: 2
+    cell_selector = 'tr>td'
+    assert_select cell_selector, text: Regexp.new('None'.to_s), count: 2
     assert_select cell_selector, text: Regexp.new("First Name".to_s), count: 2
     assert_select cell_selector, text: Regexp.new("Last Name".to_s), count: 2
     assert_select cell_selector, text: Regexp.new(2.to_s), count: 2
-    assert_select cell_selector, text: Regexp.new(false.to_s), count: 2
-    assert_select cell_selector, text: Regexp.new("Email".to_s), count: 2
-    assert_select cell_selector, text: Regexp.new(false.to_s), count: 2
-    assert_select cell_selector, text: Regexp.new(false.to_s), count: 2
+    assert_select cell_selector, text: /\bNo\b/, count: 6
+    assert_select cell_selector, text: Regexp.new("test@tamu.edu".to_s), count: 1
+    assert_select cell_selector, text: Regexp.new("test@gmail.com".to_s), count: 1
   end
 end

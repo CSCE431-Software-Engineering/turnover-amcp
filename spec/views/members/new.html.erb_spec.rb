@@ -8,7 +8,7 @@ RSpec.describe "members/new", type: :view do
       last_name: "MyString",
       points: 1,
       is_admin: false,
-      email: "MyString",
+      email: "test@gmail.com",
       paid_nat_dues: false,
       paid_loc_dues: false
     ))
@@ -19,7 +19,7 @@ RSpec.describe "members/new", type: :view do
 
     assert_select "form[action=?][method=?]", members_path, "post" do
 
-      assert_select "input[name=?]", "member[team_id]"
+      assert_select "select[name=?]", "member[team_id]"
 
       assert_select "input[name=?]", "member[first_name]"
 
