@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module AuthenticationHelpers
     def user_sign_in_via_google
       visit '/members/sign_in' # Adjust this path based on your actual route
@@ -7,8 +5,7 @@ module AuthenticationHelpers
       click_on 'Sign in with Google'
     end
   end
-end
-
-RSpec.configure do |config|
-  config.include AuthenticationHelpers, type: :feature
-end
+  
+  RSpec.configure do |config|
+    config.include AuthenticationHelpers, type: :feature
+  end
