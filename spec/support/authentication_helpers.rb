@@ -1,6 +1,6 @@
 module AuthenticationHelpers
     def user_sign_in_via_google
-      visit '/admins/sign_in' # Adjust this path based on your actual route
+      visit '/members/sign_in' # Adjust this path based on your actual route
       # The actual authentication is mocked by OmniAuth, no need to interact with Google's login page
       click_on 'Sign in with Google'
     end

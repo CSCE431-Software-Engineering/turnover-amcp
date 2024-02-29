@@ -1,4 +1,5 @@
 class MembersController < ApplicationController
+  before_action :authenticate_member! # Ensure the member is logged in
   before_action :set_member, only: %i[ show edit update destroy ]
 
   # GET /members or /members.json
@@ -19,6 +20,10 @@ class MembersController < ApplicationController
   def edit
   end
 
+  def profile
+    @member = current_member # Assuming Devise and current_admin helper is available
+    render :show # Optionally, you can render the same view as 'show' if it fits
+  end
   # POST /members or /members.json
   def create
     # Check if the team_id is set to 0 and if so, set it to nil

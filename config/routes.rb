@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
-  resources :members
-  devise_for :admins, controllers: { omniauth_callbacks: 'admins/omniauth_callbacks' }
-  devise_scope :admin do
-    get 'admins/sign_in', to: 'admins/sessions#new', as: :new_admin_session
-    get 'admins/sign_out', to: 'admins/sessions#destroy', as: :destroy_admin_session
+
+  devise_for :members, controllers: { omniauth_callbacks: 'members/omniauth_callbacks' }
+  devise_scope :member do
+    get 'members/sign_in', to: 'members/sessions#new', as: :new_member_session
+    get 'members/sign_out', to: 'members/sessions#destroy', as: :destroy_member_session
   end
 
-  resources :admins do
-    get 'profile', on: :collection, as: 'profile' # Changes the path to /admins/profile
-    get 'profiles', on: :collection, as: 'profiles' # Changes the path to /admins/profiles
-  end
+  # resources :admins do
+  #   get 'profile', on: :collection, as: 'profile' # Changes the path to /admins/profile
+  #   get 'profiles', on: :collection, as: 'profiles' # Changes the path to /admins/profiles
+  # end
+  resources :members
   resources :teams
   resources :activities
   resources :feedbacks
