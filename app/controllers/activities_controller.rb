@@ -29,11 +29,11 @@ class ActivitiesController < ApplicationController
   def sign_up
     @activity = Activity.find(params[:id])
     participation = Participation.new(member: current_member, activity: @activity)
-
+  
     if participation.save
       flash[:notice] = 'You have successfully signed up for the activity.'
     else
-      flash[:alert] = 'Unable to sign up for the activity.'
+      flash[:alert] = participation.errors.full_messages.to_sentence
     end
     redirect_to @activity
   end
