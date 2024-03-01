@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_25_213004) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_01_015653) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,6 +25,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_25_213004) do
     t.string "activity_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "activity_participations", force: :cascade do |t|
+    t.bigint "member_id", null: false
+    t.bigint "activity_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_activity_participations_on_activity_id"
+    t.index ["member_id"], name: "index_activity_participations_on_member_id"
   end
 
   create_table "admins", force: :cascade do |t|
@@ -62,6 +71,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_25_213004) do
     t.index ["team_id"], name: "index_members_on_team_id"
   end
 
+  create_table "participations", force: :cascade do |t|
+    t.bigint "member_id", null: false
+    t.bigint "activity_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_participations_on_activity_id"
+    t.index ["member_id"], name: "index_participations_on_member_id"
+  end
+
   create_table "teams", force: :cascade do |t|
     t.integer "team_number"
     t.integer "member_count"
@@ -69,5 +87,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_25_213004) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "activity_participations", "activities"
+  add_foreign_key "activity_participations", "members"
   add_foreign_key "members", "teams"
+  add_foreign_key "participations", "activities"
+  add_foreign_key "participations", "members"
 end

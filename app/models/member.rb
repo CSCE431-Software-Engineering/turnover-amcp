@@ -8,6 +8,9 @@ class Member < ApplicationRecord
   validates :team_id, presence: true, unless: :not_part_of_any_team?
   validate :team_exists_if_not_part_of_any_team
 
+  has_many :participations
+  has_many :activities, through: :participations
+
   private
 
   def not_part_of_any_team?

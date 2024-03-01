@@ -14,7 +14,13 @@ Rails.application.routes.draw do
   # end
   resources :members
   resources :teams
-  resources :activities
+  resources :activities do
+    member do
+      post 'sign_up'
+      get 'participants'
+      delete 'remove_participant/:participant_id', to: 'activities#remove_participant', as: 'remove_participant'
+    end
+  end
   resources :feedbacks
   resources :home
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
