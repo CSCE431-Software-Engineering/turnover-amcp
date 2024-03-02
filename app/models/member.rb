@@ -1,6 +1,9 @@
 # app/models/member.rb
 class Member < ApplicationRecord
   devise :omniauthable, omniauth_providers: [:google_oauth2]
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :points, presence: true
   validates :email, presence: true
   validates :email, format: { with: /\A[\w+\-.]+@(gmail\.com|tamu\.edu)\z/i, message: "must be a Gmail or TAMU email" }
   belongs_to :team, optional: true
