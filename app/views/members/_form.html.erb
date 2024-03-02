@@ -1,0 +1,57 @@
+<%= form_with(model: member, local: true) do |form| %>
+  <% if member.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(member.errors.count, "error") %> prohibited this member from being saved:</h2>
+
+      <ul>
+      <% member.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :points %>
+    <%= form.number_field :points %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_admin %>
+    <%= form.check_box :is_admin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :paid_nat_dues %>
+    <%= form.check_box :paid_nat_dues %>
+  </div>
+
+  <div class="field">
+    <%= form.label :paid_loc_dues %>
+    <%= form.check_box :paid_loc_dues %>
+  </div>
+
+  <div class="field">
+    <%= form.label :team_id %>
+    <%= form.select :team_id, options_for_select([['None', nil]] + Team.pluck(:team_number, :id), selected: member.team_id) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

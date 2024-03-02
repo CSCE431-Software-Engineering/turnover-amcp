@@ -8,8 +8,8 @@
 # by displaying a welcome message upon their return to the site.
 class HomeController < ApplicationController
   def index
-    return unless admin_signed_in?
-
-    @message = 'Welcome back, Admin!'
+    if member_signed_in?
+      @message = "Welcome back, User!"
+    end
   end
 end
