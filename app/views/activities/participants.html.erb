@@ -1,0 +1,12 @@
+<h1>Participants for <%= @activity.event_name %></h1>
+
+<ul>
+  <% @participants.each do |participant| %>
+    <li>
+      <%= participant.first_name %> <%= participant.last_name %>
+      <%= button_to 'Remove', remove_participant_activity_path(id: @activity.id, participant_id: participant.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Back to Activity', activity_path(@activity) %>
