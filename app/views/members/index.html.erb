@@ -1,0 +1,69 @@
+<%= link_to 'Back to Homepage', root_path %><br />
+
+<div style="text-align: center;">
+  <h1>Members</h1>
+</div>
+
+<style>
+  .members-table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  .members-table th, .members-table td {
+    border: 1px solid #dddddd;
+    text-align: center; /* Center align text */
+    padding: 8px;
+  }
+
+  .members-table th {
+    background-color: #f2f2f2;
+  }
+</style>
+
+<%= link_to "New member", new_member_path %>
+
+<table class="members-table">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Points</th>
+      <th>Admin</th>
+      <th>Email</th>
+      <th>Paid National Dues</th>
+      <th>Paid Local Dues</th>
+      <th>Team</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+      <tr id="member_<%= member.id %>">
+        <td><%= member.first_name %></td>
+        <td><%= member.last_name %></td>
+        <td><%= member.points %></td>
+        <td><%= member.is_admin ? 'Yes' : 'No' %></td>
+        <td><%= member.email %></td>
+        <td><%= member.paid_nat_dues ? 'Yes' : 'No' %></td>
+        <td><%= member.paid_loc_dues ? 'Yes' : 'No' %></td>
+        <td><%= member.team ? member.team.team_number : 'None' %></td>
+        <td><%= link_to "Edit", edit_member_path(member) %></td>
+        <td><%= button_to "Destroy", member, method: :delete, remote: true, data: { confirm: "Are you sure?" } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<script>
+  document.addEventListener("ajax:success", function(event) {
+    const elementId = event.detail[0].id;
+    const element = document.getElementById(elementId);
+    element.parentNode.removeChild(element);
+  });
+</script>
+
+
+
+
