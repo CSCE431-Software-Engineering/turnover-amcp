@@ -5,6 +5,10 @@ module AuthenticationHelpers
       visit '/members/sign_in' # Adjust this path based on your actual route
       # The actual authentication is mocked by OmniAuth, no need to interact with Google's login page
       click_on 'Sign in with Google'
+      current_user = Member.find_by(email: 'test@gmail.com')
+      if current_user
+        current_user.update(is_admin:true)
+      end
     end
   end
   

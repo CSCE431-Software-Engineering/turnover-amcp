@@ -24,9 +24,13 @@ RSpec.describe "/members", type: :request do
   end
   let(:valid_attributes) {
     {
-      # other attributes here
+      first_name: 'John',
+      last_name: 'Doe',
+      points: 100,
       email: 'test@gmail.com',
-      # any other attributes you want to include or modify
+      is_admin: false,
+      paid_nat_dues: false,
+      paid_loc_dues: false
     }
   }
   let(:invalid_attributes) {
@@ -35,7 +39,7 @@ RSpec.describe "/members", type: :request do
 
   describe "GET /index" do
     it "renders a successful response" do
-      Member.create! valid_attributes
+      Member.create!(valid_attributes)
       get members_url
       expect(response).to be_successful
     end
