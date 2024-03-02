@@ -1,5 +1,6 @@
 class MembersController < ApplicationController
   before_action :authenticate_member! # Ensure the member is logged in
+  before_action :check_admin
   before_action :set_member, only: %i[ show edit update destroy ]
 
   # GET /members or /members.json
@@ -69,6 +70,12 @@ class MembersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to members_url, notice: "Member was successfully destroyed." }
       format.json { head :no_content }
+    end
+  end
+
+  def check_admin
+    unless current_member&.is_admin?
+      redirect_to root_path, alert: 'You are not authorized to view this page.'
     end
   end
 
