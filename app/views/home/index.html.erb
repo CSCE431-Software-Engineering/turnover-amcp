@@ -7,4 +7,7 @@
 <%= link_to('Feedback', feedbacks_path) %><br />
 <%= link_to('Activities', activities_path) %><br />
 <%= link_to "Teams", teams_path %><br />
-<%= link_to('Members', members_path) %><br />
+<% if current_member.is_admin? %>
+  <%= link_to('Members', members_path) %><br />
+<% end %>
+

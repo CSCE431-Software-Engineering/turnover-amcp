@@ -27,15 +27,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_01_021644) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "activity_participations", force: :cascade do |t|
-    t.bigint "member_id", null: false
-    t.bigint "activity_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["activity_id"], name: "index_activity_participations_on_activity_id"
-    t.index ["member_id"], name: "index_activity_participations_on_member_id"
-  end
-
   create_table "admins", force: :cascade do |t|
     t.string "email", null: false
     t.string "full_name"
@@ -88,8 +79,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_01_021644) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "activity_participations", "activities"
-  add_foreign_key "activity_participations", "members"
   add_foreign_key "members", "teams"
   add_foreign_key "participations", "activities"
   add_foreign_key "participations", "members"
