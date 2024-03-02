@@ -20,8 +20,8 @@ RSpec.describe '/teams', type: :request do
   # adjust the attributes here as well.
   include Devise::Test::IntegrationHelpers
   before do
-    member = FactoryBot.create(:member) # Adjust as needed
-    sign_in member
+    admin = FactoryBot.create(:admin) # Adjust as needed
+    sign_in admin
   end
 
   let(:valid_attributes) do

@@ -15,8 +15,4 @@ class Activity < ApplicationRecord
   validates :location, presence: true
   validates :description, presence: true
   validates :activity_type, presence: true
-
-  has_many :participations
-  has_many :members, through: :participations
-  
 end
