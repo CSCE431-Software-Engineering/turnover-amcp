@@ -7,5 +7,5 @@
 # Specifically, it enforces admin authentication before performing any actions,
 # ensuring that only authenticated admin users can access certain functionalities.
 class ApplicationController < ActionController::Base
-    before_action :authenticate_member!
-  end
+  before_action :authenticate_admin!
+end

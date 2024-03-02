@@ -5,8 +5,8 @@ require 'rails_helper'
 RSpec.describe 'Homes', type: :request do
   include Devise::Test::IntegrationHelpers
   before do
-    member = FactoryBot.create(:member) # Adjust as needed
-    sign_in member
+    admin = FactoryBot.create(:admin) # Adjust as needed
+    sign_in admin
   end
 
   describe 'GET root' do

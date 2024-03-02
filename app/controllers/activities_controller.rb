@@ -7,37 +7,6 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: %i[show edit update destroy]
 
-  before_action :authenticate_member! # Assumes you have some authentication method
-
-  def participants
-    @activity = Activity.find(params[:id])
-    @participants = @activity.members
-  end
-
-  def remove_participant
-    activity = Activity.find(params[:id])
-    participant = activity.members.find(params[:participant_id])
-    if participant
-      activity.members.delete(participant)
-      flash[:notice] = "Participant was successfully removed."
-    else
-      flash[:alert] = "Participant could not be found."
-    end
-    redirect_to participants_activity_path(activity)
-  end
-
-  def sign_up
-    @activity = Activity.find(params[:id])
-    participation = Participation.new(member: current_member, activity: @activity)
-  
-    if participation.save
-      flash[:notice] = 'You have successfully signed up for the activity.'
-    else
-      flash[:alert] = participation.errors.full_messages.to_sentence
-    end
-    redirect_to @activity
-  end
-
   # GET /activities or /activities.json
   def index
     @activities = Activity.all
@@ -104,5 +73,4 @@ class ActivitiesController < ApplicationController
     params.require(:activity).permit(:event_name, :start_time, :end_time, :start_date, :end_date, :location,
                                      :description, :activity_type)
   end
-
 end

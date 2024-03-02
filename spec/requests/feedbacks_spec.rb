@@ -21,8 +21,8 @@ RSpec.describe '/feedbacks', type: :request do
 
   include Devise::Test::IntegrationHelpers
   before do
-    member = FactoryBot.create(:member) # Adjust as needed
-    sign_in member
+    admin = FactoryBot.create(:admin) # Adjust as needed
+    sign_in admin
   end
 
   let(:valid_attributes) do
