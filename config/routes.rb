@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   end
   resources :feedbacks
   resources :home
+  get 'calendar', to: 'calendar#calendar', as: 'calendar'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
