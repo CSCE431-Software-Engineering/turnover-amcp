@@ -35,6 +35,7 @@ RSpec.describe 'activities/index', type: :view do
         assert_select activity, 'p', text: 'Description', count: 1
         assert_select activity, 'p', text: 'Activity Type', count: 1
         assert_select activity, 'p', text: /\d+ points/, count: 1
+        assert_select activity, 'p', text: /\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}/, count: 2  # Assuming datetime format
       end
     end
   end
