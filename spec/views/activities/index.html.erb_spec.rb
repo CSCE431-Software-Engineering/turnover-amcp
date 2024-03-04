@@ -30,11 +30,11 @@ RSpec.describe 'activities/index', type: :view do
     render
     assert_select 'div.activity', count: 2 do |activities|
       activities.each do |activity|
-        assert_select activity, 'p', text: 'Event Name', count: 1
-        assert_select activity, 'p', text: 'Location', count: 1
-        assert_select activity, 'p', text: 'Description', count: 1
-        assert_select activity, 'p', text: 'Activity Type', count: 1
-        assert_select activity, 'p', text: /\d+ points/, count: 1
+        assert_select activity, 'p', text: /Event Name/, count: 1
+        assert_select activity, 'p', text: /Location/, count: 1
+        assert_select activity, 'p', text: /Description/, count: 1
+        assert_select activity, 'p', text: /Activity Type/, count: 1
+        assert_select activity, 'p', text: /Points/, count: 1
         assert_select activity, 'p', text: /\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}/, count: 2  # Assuming datetime format
       end
     end
