@@ -1,13 +1,82 @@
-<h1>AMCP</h1>
-<% if @message %>
-  <p><%= @message %></p>
-  <%= link_to "Sign Out", destroy_member_session_path %>
-<% end %>
-<p>This is the homepage for the AMCP website</p>
-<%= link_to('Feedback', feedbacks_path) %><br />
-<%= link_to('Activities', activities_path) %><br />
-<%= link_to "Teams", teams_path %><br />
-<% if current_member&.is_admin? %>
-  <%= link_to('Members', members_path) %><br />
-<% end %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AMCP</title>
+  <style>
+    .contact-header {
+      background-color: #f2f2f2;
+      padding: 20px;
+      position: fixed; 
+      bottom: 0; 
+      left: 0; 
+      width: 100%; 
+      box-sizing: border-box; 
+      text-align: center; 
+    }
+
+    .contact-header h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .contact-header p {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .editable-input {
+      border: none;
+      background: none;
+      font-size: 16px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>AMCP</h1>
+  <% if @message %>
+    <p><%= @message %></p>
+    <%= link_to "Sign Out", destroy_member_session_path %>
+  <% end %>
+  <p>This is the homepage for the AMCP website</p>
+
+  <div class="contact-header">
+    <h2>Contact Us</h2>
+    <p>Name: Jeremiah Hall</p>
+    <p>Email: <span id="email" contenteditable="true" class="editable-input"></span></p>
+    <p>Phone: +1-123-456-7890</p>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const emailElement = document.getElementById('email');
+
+      // Function to retrieve email from sessionStorage
+      function getEmail() {
+        const storedEmail = sessionStorage.getItem('email');
+        if (storedEmail) {
+          emailElement.innerText = storedEmail;
+        } else {
+          // Set default email if not found in sessionStorage
+          emailElement.innerText = 'contact@amcp.com';
+        }
+      }
+
+      // Call getEmail function when page loads
+      getEmail();
+
+      // Listen for changes in the email and store in sessionStorage
+      emailElement.addEventListener('input', function() {
+        const newEmail = this.innerText.trim();
+        sessionStorage.setItem('email', newEmail);
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
 
