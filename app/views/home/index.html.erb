@@ -41,13 +41,7 @@
     <%= link_to "Sign Out", destroy_member_session_path %>
   <% end %>
   <p>This is the homepage for the AMCP website</p>
-  <%= link_to('Feedback', feedbacks_path) %><br />
-  <%= link_to('Activities', activities_path) %><br />
-  <%= link_to 'Calendar', calendar_path %><br />
-  <%= link_to "Teams", teams_path %><br />
-  <% if current_member&.is_admin? %>
-    <%= link_to('Members', members_path) %><br />
-  <% end %>
+
   <div class="contact-header">
     <h2>Contact Us</h2>
     <p>Name: Jeremiah Hall</p>
