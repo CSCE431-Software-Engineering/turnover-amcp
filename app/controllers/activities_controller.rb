@@ -37,7 +37,7 @@ class ActivitiesController < ApplicationController
     if participation.save
       current_member.points += @activity.points
       if current_member.save
-        flash[:notice] = 'You have successfully signed up for the activity and earned #{@activity.points} points.'
+        flash[:notice] = 'You have successfully signed up for the activity and earned points.'
       else
         flash[:alert] = current_member.errors.full_messages.to_sentence
       end
