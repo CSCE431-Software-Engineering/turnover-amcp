@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # spec/models/activity_spec.rb
 
 require 'rails_helper'
@@ -8,11 +10,10 @@ RSpec.describe Activity, type: :model do
       event_name: 'Camp',
       start_time: Time.current,
       end_time: Time.current + 1.hour,
-      start_date: Date.today,
-      end_date: Date.today + 1.day,
       location: 'Texas A&M',
       description: 'sdfdfl;fjs',
-      activity_type: 'Camp'
+      activity_type: 'Camp',
+      points: 10 # Assuming 'points' is a required field
     )
   end
 
@@ -35,15 +36,7 @@ RSpec.describe Activity, type: :model do
     expect(subject).not_to be_valid
   end
 
-  it 'is not valid without a start date' do
-    subject.start_date = nil
-    expect(subject).not_to be_valid
-  end
-
-  it 'is not valid without an end date' do
-    subject.end_date = nil
-    expect(subject).not_to be_valid
-  end
+  # Removed tests for start_date and end_date
 
   it 'is not valid without a location' do
     subject.location = nil
@@ -59,6 +52,9 @@ RSpec.describe Activity, type: :model do
     subject.activity_type = nil
     expect(subject).not_to be_valid
   end
+
+  it 'is not valid without points' do
+    subject.points = nil
+    expect(subject).not_to be_valid
+  end
 end
-
-

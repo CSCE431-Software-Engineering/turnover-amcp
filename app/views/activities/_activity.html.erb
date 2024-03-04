@@ -1,4 +1,4 @@
-<div id="<%= dom_id activity %>">
+<div id="<%= dom_id(activity) %>" class="activity">
   <p>
     <strong>Event name:</strong>
     <%= activity.event_name %>
@@ -6,30 +6,12 @@
 
   <p>
     <strong>Start time:</strong>
-    <% if activity.start_time.present? %>
-      <%= activity.start_time.strftime("%H:%M:%S") %>
-    <% else %>
-      Not specified
-    <% end %>
+    <%= activity.start_time %>
   </p>
 
   <p>
     <strong>End time:</strong>
-    <% if activity.end_time.present? %>
-      <%= activity.end_time.strftime("%H:%M:%S") %>
-    <% else %>
-      Not specified
-    <% end %>
-  </p>
-
-  <p>
-    <strong>Start date:</strong>
-    <%= activity.start_date %>
-  </p>
-
-  <p>
-    <strong>End date:</strong>
-    <%= activity.end_date %>
+    <%= activity.end_time %>
   </p>
 
   <p>
@@ -47,4 +29,8 @@
     <%= activity.activity_type %>
   </p>
 
+  <p>
+    <strong>Points:</strong>
+    <%= activity.points %>
+  </p>
 </div>
