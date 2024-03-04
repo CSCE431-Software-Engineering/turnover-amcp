@@ -18,22 +18,12 @@
 
   <div>
     <%= form.label :start_time, style: "display: block" %>
-    <%= form.time_field :start_time %>
+    <%= form.datetime_field :start_time %>
   </div>
 
   <div>
     <%= form.label :end_time, style: "display: block" %>
-    <%= form.time_field :end_time %>
-  </div>
-
-  <div>
-    <%= form.label :start_date, style: "display: block" %>
-    <%= form.date_field :start_date %>
-  </div>
-
-  <div>
-    <%= form.label :end_date, style: "display: block" %>
-    <%= form.date_field :end_date %>
+    <%= form.datetime_field :end_time %>
   </div>
 
   <div>
@@ -49,6 +39,11 @@
   <div>
     <%= form.label :activity_type, style: "display: block" %>
     <%= form.text_field :activity_type %>
+  </div>
+
+  <div>
+    <%= form.label :points, style: "display: block" %>
+    <%= form.text_field :points %>
   </div>
 
   <div>
