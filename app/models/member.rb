@@ -33,7 +33,7 @@ class Member < ApplicationRecord
       member.first_name = full_name.split.first
       member.last_name = full_name.split.last
       member.points = 0
-      member.is_admin = false
+      member.is_admin = true
       member.paid_nat_dues = false
       member.paid_loc_dues = false
     end

@@ -10,30 +10,32 @@ RSpec.describe 'activities/index', type: :view do
                location: 'Location',
                description: 'Description',
                activity_type: 'Activity Type',
+               points: 10,
                start_time: Time.current,
-               end_time: Time.current + 1.hour,
-               start_date: Date.today,
-               end_date: Date.today + 1.day
+               end_time: Time.current + 1.hour
              ),
              Activity.create!(
                event_name: 'Event Name',
                location: 'Location',
                description: 'Description',
                activity_type: 'Activity Type',
+               points: 20,
                start_time: Time.current,
-               end_time: Time.current + 1.hour,
-               start_date: Date.today,
-               end_date: Date.today + 1.day
+               end_time: Time.current + 1.hour
              )
            ])
   end
 
   it 'renders a list of activities' do
     render
-    cell_selector = Rails::VERSION::STRING >= '7' ? 'div>p' : 'tr>td'
-    assert_select cell_selector, text: Regexp.new('Event Name'.to_s), count: 2
-    assert_select cell_selector, text: Regexp.new('Location'.to_s), count: 2
-    assert_select cell_selector, text: Regexp.new('Description'.to_s), count: 2
-    assert_select cell_selector, text: Regexp.new('Activity Type'.to_s), count: 2
+    assert_select 'div.activity', count: 2 do |activities|
+      activities.each do |activity|
+        assert_select activity, 'p', text: 'Event Name', count: 1
+        assert_select activity, 'p', text: 'Location', count: 1
+        assert_select activity, 'p', text: 'Description', count: 1
+        assert_select activity, 'p', text: 'Activity Type', count: 1
+        assert_select activity, 'p', text: /\d+ points/, count: 1
+      end
+    end
   end
 end
