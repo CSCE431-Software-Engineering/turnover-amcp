@@ -14,4 +14,5 @@ module AuthenticationHelpers
   
   RSpec.configure do |config|
     config.include AuthenticationHelpers, type: :feature
+    config.include AuthenticationHelpers, type: :views
   end
