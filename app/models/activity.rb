@@ -11,7 +11,7 @@ class Activity < ApplicationRecord
   validates :location, presence: true
   validates :description, presence: true
   validates :activity_type, presence: true
-  validates :points, presence: true # Add this line if points is a required field
+  validates :points, presence: true
 
   has_many :participations, dependent: :destroy
   has_many :members, through: :participations

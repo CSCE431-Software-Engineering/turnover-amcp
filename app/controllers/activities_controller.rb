@@ -18,6 +18,9 @@ class ActivitiesController < ApplicationController
     activity = Activity.find(params[:id])
     participant = activity.members.find(params[:participant_id])
     if participant
+      new_points_total = participant.points - activity.points
+      participant.update(points: new_points_total)
+  
       activity.members.delete(participant)
       flash[:notice] = "Participant was successfully removed."
     else
@@ -25,13 +28,19 @@ class ActivitiesController < ApplicationController
     end
     redirect_to participants_activity_path(activity)
   end
+  
 
   def sign_up
     @activity = Activity.find(params[:id])
     participation = Participation.new(member: current_member, activity: @activity)
   
     if participation.save
-      flash[:notice] = 'You have successfully signed up for the activity.'
+      current_member.points += @activity.points
+      if current_member.save
+        flash[:notice] = 'You have successfully signed up for the activity and earned #{@activity.points} points.'
+      else
+        flash[:alert] = current_member.errors.full_messages.to_sentence
+      end
     else
       flash[:alert] = participation.errors.full_messages.to_sentence
     end
