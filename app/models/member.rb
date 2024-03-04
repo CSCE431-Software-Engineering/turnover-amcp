@@ -1,6 +1,9 @@
 # app/models/member.rb
 class Member < ApplicationRecord
   devise :omniauthable, omniauth_providers: [:google_oauth2]
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :points, presence: true
   validates :email, presence: true
   validates :email, format: { with: /\A[\w+\-.]+@(gmail\.com|tamu\.edu)\z/i, message: "must be a Gmail or TAMU email" }
   belongs_to :team, optional: true
@@ -8,7 +11,7 @@ class Member < ApplicationRecord
   validates :team_id, presence: true, unless: :not_part_of_any_team?
   validate :team_exists_if_not_part_of_any_team
 
-  has_many :participations
+  has_many :participations, dependent: :destroy
   has_many :activities, through: :participations
 
   private
@@ -33,7 +36,7 @@ class Member < ApplicationRecord
       member.first_name = full_name.split.first
       member.last_name = full_name.split.last
       member.points = 0
-      member.is_admin = true
+      member.is_admin = false
       member.paid_nat_dues = false
       member.paid_loc_dues = false
     end
