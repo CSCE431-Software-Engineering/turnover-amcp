@@ -35,13 +35,15 @@
   </style>
 </head>
 <body>
+<div style="text-align: center;">
   <h1>AMCP</h1>
+
+  
   <% if @message %>
     <p><%= @message %></p>
-    <%= link_to "Sign Out", destroy_member_session_path %>
   <% end %>
   <p>This is the homepage for the AMCP website</p>
-
+  </div>
   <div class="contact-header">
     <h2>Contact Us</h2>
     <p>Name: Jeremiah Hall</p>
