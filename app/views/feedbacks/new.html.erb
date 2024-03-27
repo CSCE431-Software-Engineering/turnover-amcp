@@ -1,12 +1,29 @@
-<%= link_to("Back to Feedback", feedbacks_path, :class => 'back-link') %>
+<style>
+  h1 {
+    margin-left: 10px;
+  }
 
+  p {
+    margin-left: 11px;
+  }
+
+  .input {
+    margin-left: 11px;
+    margin-top: 5px;
+  }
+
+  .link {
+    margin-left: 10px;
+    margin-top: 5px;
+  }
+</style>
+
+<div class="link">
+  <%= link_to("Back", feedbacks_path, :class => 'back-link') %>
+</div>
 
 <h1>New feedback</h1>
 
 <%= render "form", feedback: @feedback %>
 
 <br>
-
-<div>
-  <%= link_to "Back to feedback", feedbacks_path %>
-</div>
