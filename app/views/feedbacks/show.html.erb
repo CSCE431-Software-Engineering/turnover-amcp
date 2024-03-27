@@ -1,10 +1,32 @@
-<%= link_to("Back to Feedback", feedbacks_path, :class => 'back-link') %>
+<style>
+  h1 {
+    margin-left: 10px;
+  }
+
+  p {
+    margin-left: 11px;
+  }
+
+  .input {
+    margin-left: 11px;
+    margin-top: 5px;
+  }
+
+  .link {
+    margin-left: 10px;
+    margin-top: 5px;
+  }
+</style>
+
+<div class="link">
+  <%= link_to("Back", feedbacks_path, :class => 'back-link') %>
+</div>
+
+<p>Once you leave this page you can no longer edit or delete this feedback unless you ask an admin!</p>
 
 <%= render @feedback %>
 
-<div>
-  <%= link_to "Edit this feedback", edit_feedback_path(@feedback) %> |
-  <%= link_to "Back to feedback", feedbacks_path %>
-
+<div class="input">
+  <%= link_to "Edit", edit_feedback_path(@feedback) %>
   <%= button_to "Destroy this feedback", @feedback, method: :delete %>
 </div>
