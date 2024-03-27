@@ -1,10 +1,27 @@
-<h1>Editing feedback</h1>
+<style>
+  h1 {
+    margin-left: 10px;
+  }
+
+  p {
+    margin-left: 11px;
+  }
+
+  .input {
+    margin-left: 11px;
+    margin-top: 5px;
+  }
+
+  .link {
+    margin-left: 10px;
+    margin-top: 5px;
+  }
+</style>
+
+<h1>Edit Feedback</h1>
+
+<div class="link">
+  <%= link_to "Back", feedbacks_path %>
+</div>
 
 <%= render "form", feedback: @feedback %>
-
-<br>
-
-<div>
-  <%= link_to "Show this feedback", @feedback %> |
-  <%= link_to "Back to feedback", feedbacks_path %>
-</div>

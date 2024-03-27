@@ -1,14 +1,75 @@
-<%= link_to 'Back to Homepage', root_path %><br />
+<style>
+  h1 {
+    margin-left: 10px;
+  }
+
+  p {
+    margin-left: 11px;
+  }
+
+  .feedback-table {
+    border-collapse: collapse;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .feedback-table th, .feedback-table td {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+  }
+
+  .feedback-table th {
+    background-color: #f2f2f2;
+  }
+
+  .button {
+    display: inline-block;
+    padding: 5px 10px;
+    margin-left: 11px;
+    background-color: #8c2a00;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+  }
+  
+  .button:hover {
+    background-color: #672000;
+    color: white;
+  }
+</style>
 
 <h1>Feedback</h1>
 
-<div id="feedbacks">
-  <% @feedbacks.each do |feedback| %>
-    <%= render feedback %>
-    <p>
-      <%= link_to "Show this feedback", feedback %>
-    </p>
-  <% end %>
-</div>
+<% if !current_member&.is_admin? %>
+  <p>Fill out the form below if you have any feedback you would like to share with us. Any feedback is appreciated!</p>
+<% end %>
 
-<%= link_to "New feedback", new_feedback_path %>
+<%= link_to "New feedback", new_feedback_path, class: "button" %>
+
+<% if current_member&.is_admin? %>
+  <table class="feedback-table">
+    <thead>
+      <tr>
+        <th>Feedback</th>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @feedbacks.each do |feedback| %>
+        <tr id="feedback_<%= feedback.id %>">
+          <td><%= feedback.feedback %></td>
+          <td><%= feedback.email %></td>
+          <td><%= feedback.name %></td>
+          <td><%= link_to "Edit", edit_feedback_path(feedback) %></td>
+          <td><%= button_to "Destroy", feedback, method: :delete, remote: true, data: { confirm: "Are you sure?" } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
