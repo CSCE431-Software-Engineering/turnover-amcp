@@ -3,6 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'activities/show', type: :view do
+  include Devise::Test::ControllerHelpers
   before(:each) do
     @activity = assign(:activity, Activity.create!(
                                     event_name: 'Event Name',

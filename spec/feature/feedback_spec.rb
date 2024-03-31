@@ -70,7 +70,8 @@ RSpec.describe 'CRUD feedback', type: :feature do
   scenario 'Delete feedback' do
     Feedback.create(name: 'Test Testington', email: 'testing@email.com', feedback: 'Feedback')
     visit feedbacks_path
-    click_on 'Show this feedback', match: :first
+    click_on 'Edit', match: :first
+    click_on 'Update Feedback'
     click_on 'Destroy this feedback'
     expect(page).to have_content('Feedback was successfully destroyed.')
   end

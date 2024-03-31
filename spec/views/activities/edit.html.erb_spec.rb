@@ -3,6 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'activities/edit', type: :view do
+  
   let(:activity) do
     Activity.create!(
       event_name: 'MyString',

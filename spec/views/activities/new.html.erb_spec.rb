@@ -3,6 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'activities/new', type: :view do
+  
   before(:each) do
     assign(:activity, Activity.new(
                         event_name: 'MyString',

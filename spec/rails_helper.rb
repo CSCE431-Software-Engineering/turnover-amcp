@@ -70,4 +70,5 @@ RSpec.configure do |config|
   config.include OmniAuthMocks, type: :feature # Include globally or for specific test types
   config.include AuthenticationHelpers, type: :feature
   config.include RequestAuthHelpers, type: :request
+  
 end
