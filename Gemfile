@@ -91,3 +91,5 @@ gem 'omniauth-google-oauth2'
 # gem "devise", github: "heartcombo/devise", branch: "master"
 gem 'omniauth-rails_csrf_protection'
 gem 'simple_calendar'
+gem 'bootstrap', '~> 5.0'
+
