@@ -1,29 +1,31 @@
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  document.getElementById('popup_link').addEventListener('click', function(e) {
-    e.preventDefault();
-    fetch('<%= new_activity_path %>')
-      .then(response => response.text())
-      .then(html => {
-        document.getElementById('new-activity-form').innerHTML = html;
-      });
-  });
-});
 
-document.addEventListener("DOMContentLoaded", function() {
-  document.querySelectorAll('.activity-link').forEach(item => {
-    item.addEventListener('click', function(e) {
+  // Delegate event for both activity links and new activity link
+  document.addEventListener('click', function(e) {
+    // Handling activity links
+    if (e.target && e.target.classList.contains('activity-link')) {
       e.preventDefault();
-      const url = this.getAttribute('data-url'); // URL from the data attribute
+      const url = e.target.getAttribute('data-url'); // URL from the data attribute
       fetch(url)
         .then(response => response.text())
         .then(html => {
           document.getElementById('activity-detail-content').innerHTML = html;
         });
-    });
-  });
-});
+    }
 
+    // Handling new activity link
+    if (e.target && e.target.id === 'popup_link') {
+      e.preventDefault();
+      fetch('<%= new_activity_path %>')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('new-activity-form').innerHTML = html;
+        });
+    }
+  });
+
+});
 
 </script>
 
