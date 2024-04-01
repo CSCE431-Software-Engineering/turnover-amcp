@@ -32,6 +32,21 @@
       font-size: 16px;
       text-align: center;
     }
+
+    .body-content {
+      text-align: center;
+      max-width: 600px; /* Set a maximum width */
+      margin: 40px auto; /* Vertically space out and center the paragraph */
+      padding: 20px;
+      background-color: #f9f9f9; /* Light background color */
+      color: #333333; /* Dark text for contrast */
+      font-family: Arial, sans-serif; /* A readable font */
+      line-height: 1.6; /* Spacing between lines */
+      font-size: 18px; /* Comfortable reading size */
+      border-radius: 8px; /* Optional: Rounded corners for aesthetics */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for depth */
+    }
+
   </style>
 </head>
 <body>
@@ -42,8 +57,10 @@
   <% if @message %>
     <p><%= @message %></p>
   <% end %>
-  <p>This is the homepage for the AMCP website</p>
+  <div class="body-content">
+    <p>AMCP (Academy of Managed Care Pharmacy) is a professional association with the mission to ensure positive health care outcomes through quality, accessible, and affordable pharmaceutical care. Our organization aims to support our members with education, research, and the dissemination of health care information related to managed care pharmacy.</p>
   </div>
+</div>
   <div class="contact-header">
     <h2>Contact Us</h2>
     <p>Name: Jeremiah Hall</p>
