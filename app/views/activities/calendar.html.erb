@@ -1,0 +1,93 @@
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById('popup_link').addEventListener('click', function(e) {
+    e.preventDefault();
+    fetch('<%= new_activity_path %>')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('new-activity-form').innerHTML = html;
+      });
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll('.activity-link').forEach(item => {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
+      const url = this.getAttribute('data-url'); // URL from the data attribute
+      fetch(url)
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('activity-detail-content').innerHTML = html;
+        });
+    });
+  });
+});
+
+
+</script>
+
+
+<%= link_to 'Back to Homepage', root_path %><br />
+
+<div class="container mt-5 text-center">
+    <h1>Calendar</h1>
+    <%= month_calendar(events: @activities) do |date, activities| %>
+        <div class="day">
+            <%= date %>
+        </div>
+        <% activities.each do |activity| %>
+            <div class="card-header">
+                <h5 class="card-title">
+                    <%= link_to activity.event_name, activity_path(activity), 
+            class: 'activity-link', 
+            'data-bs-toggle': 'modal', 
+            'data-bs-target': '#activityDetailModal',
+            'data-url': activity_path(activity) %>
+
+                </h5>
+            </div>
+        <% end %>
+    <% end %>
+    <%= link_to 'New Activity', activities_path, id: 'popup_link', 'data-bs-toggle': 'modal', 'data-bs-target': '#activitiesModal' %>
+</div>
+
+<!-- New Activity Modal -->
+<div class="modal fade" id="activitiesModal" tabindex="-1" aria-labelledby="activitiesModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="activitiesModalLabel">Activities</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+        <!-- Container for new activity form -->
+        <div id="new-activity-form">
+          <!-- Content from new.html.erb will be loaded here -->
+        </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Activity Detail Modal -->
+<div class="modal fade" id="activityDetailModal" tabindex="-1" aria-labelledby="activityDetailModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="activityDetailModalLabel">Activity Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="activity-detail-content">
+        <!-- Activity content will be loaded here -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
