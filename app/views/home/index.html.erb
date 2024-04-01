@@ -32,6 +32,21 @@
       font-size: 16px;
       text-align: center;
     }
+
+    .body-content {
+      text-align: center;
+      max-width: 600px; /* Set a maximum width */
+      margin: 40px auto; /* Vertically space out and center the paragraph */
+      padding: 20px;
+      background-color: #f9f9f9; /* Light background color */
+      color: #333333; /* Dark text for contrast */
+      font-family: Arial, sans-serif; /* A readable font */
+      line-height: 1.6; /* Spacing between lines */
+      font-size: 18px; /* Comfortable reading size */
+      border-radius: 8px; /* Optional: Rounded corners for aesthetics */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for depth */
+    }
+
   </style>
 </head>
 <body>
@@ -42,43 +57,46 @@
   <% if @message %>
     <p><%= @message %></p>
   <% end %>
-  <p>This is the homepage for the AMCP website</p>
+  <div class="body-content">
+    <p>AMCP (Academy of Managed Care Pharmacy) is a professional association with the mission to ensure positive health care outcomes through quality, accessible, and affordable pharmaceutical care. Our organization aims to support our members with education, research, and the dissemination of health care information related to managed care pharmacy.</p>
   </div>
+</div>
   <div class="contact-header">
     <h2>Contact Us</h2>
-    <p>Name: Jeremiah Hall</p>
+    <p>Name: <span id="name" contenteditable="true" class="editable-input"></span></p>
     <p>Email: <span id="email" contenteditable="true" class="editable-input"></span></p>
-    <p>Phone: +1-123-456-7890</p>
+    <p>Phone: <span id="phone" contenteditable="true" class="editable-input"></span></p>
   </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      const emailElement = document.getElementById('email');
+      const editableFields = ['email', 'name', 'phone'];
 
-      // Function to retrieve email from sessionStorage
-      function getEmail() {
-        const storedEmail = sessionStorage.getItem('email');
-        if (storedEmail) {
-          emailElement.innerText = storedEmail;
+      editableFields.forEach(function(field) {
+        const element = document.getElementById(field);
+        const storedValue = sessionStorage.getItem(field);
+        if (storedValue) {
+          element.innerText = storedValue;
         } else {
-          // Set default email if not found in sessionStorage
-          emailElement.innerText = 'contact@amcp.com';
+          if (field === 'name') element.innerText = 'Jeremiah Hall';
+          if (field === 'email') element.innerText = ''; // Default is empty
+          if (field === 'phone') element.innerText = '+1-123-456-7890';
         }
-      }
 
-      // Call getEmail function when page loads
-      getEmail();
+        element.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            this.blur(); // Removes focus, effectively "saving" the edited value
+          }
+        });
 
-      // Listen for changes in the email and store in sessionStorage
-      emailElement.addEventListener('input', function() {
-        const newEmail = this.innerText.trim();
-        sessionStorage.setItem('email', newEmail);
+        element.addEventListener('input', function() {
+          sessionStorage.setItem(field, this.innerText.trim());
+        });
       });
     });
   </script>
-</body>
+  </body>
 </html>
-
-
 
 
