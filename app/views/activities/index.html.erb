@@ -10,5 +10,6 @@
     </p>
   <% end %>
 </div>
-
-<%= link_to "New activity", new_activity_path %>
+<% if current_member&.is_admin? %>
+  <%= link_to "New activity", new_activity_path %>
+<% end %>
