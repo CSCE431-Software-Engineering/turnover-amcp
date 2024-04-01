@@ -3,6 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'activities/index', type: :view do
+  include Devise::Test::ControllerHelpers
   
   before(:each) do
     assign(:activities, [
