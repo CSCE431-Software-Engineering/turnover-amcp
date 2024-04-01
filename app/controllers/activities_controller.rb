@@ -8,6 +8,16 @@ class ActivitiesController < ApplicationController
   before_action :set_activity, only: %i[show edit update destroy]
 
   before_action :authenticate_member! # Assumes you have some authentication method
+  layout 'modal_layout', only: [:new, :show] # specify other actions if needed
+
+  def calendar
+    @activities = Activity.where(
+        start_time: Time.now.beginning_of_month.beginning_of_week..Time.now.end_of_month.end_of_week
+    )
+    @activity = Activity.new # Or however you need to define @activity
+    @activities = Activity.all # Assuming you need to list activities
+  end
+
 
   def participants
     @activity = Activity.find(params[:id])
